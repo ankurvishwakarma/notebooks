@@ -1,0 +1,11 @@
+coalesce(${line_equation_for_mau_count}, offset(${line_equation_for_mau_count}, -1))
+
+if(${acs_events.event_month} = trunc_months(now()), null,  
+ ${slope_of_mau_count} * ${day_index} + ${intercept_of_mau_count})
+
+if (${acs_events.event_month} = trunc_months(now()), null,
+ intercept(${acs_events.count_distinct_user_email}, ${day_index}))
+
+if (${acs_events.event_month} = trunc_months(now()),
+ null, slope(${acs_events.count_distinct_user_email}, ${day_index}))
+
